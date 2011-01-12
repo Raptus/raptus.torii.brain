@@ -46,8 +46,9 @@ def initialize(params=None):
 
 def write():
     try:
-        with open(_path, 'wb') as filestorage:
-            _storage.write(filestorage)
+        filestorage = open(_path, 'wb')
+        _storage.write(filestorage)
+        filestorage.close()
     except IOError:
         logging.error("can't write a file at: %s"  % _path)
 
